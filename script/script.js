@@ -7,7 +7,7 @@ window.onload= async function(){ // Random meet
         const nomereceita= data.meals[0].strMeal
         const srcimagem= data.meals[0].strMealThumb
         const receita= `<div class="receita"><p>${nomereceita}</p>
-        <img src="${srcimagem}" alt="${nomereceita}"> </div>`
+        <img src="${srcimagem}" alt="${nomereceita}" onclick="AbrirReceita(this)" > </div> `
         document.getElementById('randomreceitas').innerHTML+=receita
     }
     }
@@ -16,14 +16,21 @@ window.onload= async function(){ // Random meet
     }
 }
 
+function AbrirReceita(imagem){ // Direcionar para uma pagina ao clicar em uma receita do menu inicial
+    const prato= imagem.alt
+    console.log(prato)
+    window.location.href= `prato.html?busca=${encodeURIComponent(prato)}`
+
+}
 
 
-function novapagina(){
+
+function novapagina(){ // Abrir uma pagina apra a receita específica digitada 
     const prato= document.getElementById('pratoinput').value
     window.location.href= `prato.html?busca=${encodeURIComponent(prato)}`
 }
 
-function paginaReceitas(){
+function paginaReceitas(){ // Criar uma pagina com as receitas de acordo com a letra inicial 
     const letra = document.getElementById('letraInicial').value
     window.location.href=`receitas.html?busca=${encodeURIComponent(letra)}`
 }

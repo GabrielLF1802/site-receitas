@@ -1,7 +1,6 @@
 window.onload = async function(){
     const params = new URLSearchParams(window.location.search);
     const nomeReceita = params.get('busca')
-    console.log(nomeReceita)
     if (!nomeReceita) {
         console.log('Nenhuma receita encontrada na URL.');
         return;
