@@ -8,8 +8,6 @@ Projeto em desenvolvimento que consome uma API de receitas e exibe pratos, ingre
 - Busca por nome
 
 ## 🔧 Em desenvolvimento
-- Estilização com CSS
-- Filtros por categoria
 - Página de detalhes
 
 ## ▶️ Como rodar
