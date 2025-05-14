@@ -3,7 +3,6 @@ window.onload= async function(){ // Random meet
     for (var i=1; i<13; ++i){
         const resposta = await fetch('https://www.themealdb.com/api/json/v1/1/random.php')
         const data = await resposta.json()
-        console.log(data.meals)
         const nomereceita= data.meals[0].strMeal
         const srcimagem= data.meals[0].strMealThumb
         const receita= `<div class="receita"><p>${nomereceita}</p>
@@ -12,14 +11,15 @@ window.onload= async function(){ // Random meet
     }
     }
     catch{
-        console.log('ERRO')
+        let erro= document.createElement('p')
+        erro.innerHTML= 'ERRO'
+        document.getElementById('randomreceitas').appendChild(erro)
     }
 }
 
 function AbrirReceita(imagem){ // Direcionar para uma pagina ao clicar em uma receita do menu inicial
     const prato= imagem.alt
-    console.log(prato)
-    window.location.href= `prato.html?busca=${encodeURIComponent(prato)}`
+    window.location.href= `AbrirPrato.html?busca=${encodeURIComponent(prato)}`
 
 }
 
@@ -27,12 +27,12 @@ function AbrirReceita(imagem){ // Direcionar para uma pagina ao clicar em uma re
 
 function novapagina(){ // Abrir uma pagina apra a receita específica digitada 
     const prato= document.getElementById('pratoinput').value
-    window.location.href= `prato.html?busca=${encodeURIComponent(prato)}`
+    window.location.href= `AbrirPrato.html?busca=${encodeURIComponent(prato)}`
 }
 
 function paginaReceitas(){ // Criar uma pagina com as receitas de acordo com a letra inicial 
     const letra = document.getElementById('letraInicial').value
-    window.location.href=`receitas.html?busca=${encodeURIComponent(letra)}`
+    window.location.href=`PesquisarInicial.html?busca=${encodeURIComponent(letra)}`
 }
 
 

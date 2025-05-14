@@ -4,6 +4,7 @@ window.onload= async function (){
     try{
         const resposta = await fetch (`https://www.themealdb.com/api/json/v1/1/search.php?f=${letra}`)
         const data = await resposta.json()
+        document.getElementById('pratoinput').remove()
         if(data.meals){
             const container= document.createElement('div')
             container.id= 'container'
@@ -20,14 +21,17 @@ window.onload= async function (){
             
         }
     }
-    catch (erro) {
-        console.log('Erro')
+    catch {
+        let erro = document.createElement('p')
+        erro.innerHTML= '<h1>ERROR<br>Invalid Result</h1>'
+        document.getElementById('prato2').appendChild(erro)
+        document.getElementById('tit').innerHTML=''
+        document.getElementById('footer').innerHTML=''
     }
 
 }
 
 function AbrirReceita(imagem) {
     const nomeReceita = imagem.alt
-    window.location.href=`AbrirReceita.html?busca=${encodeURIComponent(nomeReceita)}`
-    
+    window.location.href=`AbrirPrato.html?busca=${encodeURIComponent(nomeReceita)}`
 }
